@@ -10,6 +10,11 @@ public class MapGridObject
         Empty,
         Grass,
         Rock,
+        Trees,
+        Mine,
+        Wind,
+        Solar,
+        Research,
     }
 
     private Grid<MapGridObject> grid;

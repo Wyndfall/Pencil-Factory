@@ -20,6 +20,12 @@ public class Tilemap
         }
     }
 
+    public MapGridObject.Type GetTilemapType(Vector3 worldPosition)
+    {
+        MapGridObject mapGridObject = grid.GetGridObject(worldPosition);
+        return mapGridObject.GetGridType();
+    }
+
     public List<MapGridObject> GetMapGridObjectList()
     {
         List<MapGridObject> gridObjectList = new List<MapGridObject>();

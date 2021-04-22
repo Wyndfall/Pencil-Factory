@@ -7,9 +7,15 @@ public class GridPrefabVisual : MonoBehaviour
     public static GridPrefabVisual Instance { get; private set; }
 
     [SerializeField] private GridSettings gridSettings;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] public Transform EmptyPrefab;
     [SerializeField] private Transform GrassPrefab;
     [SerializeField] private Transform RockPrefab;
+    [SerializeField] private Transform TreesPrefab;
+    [SerializeField] private Transform MinePrefab;
+    [SerializeField] private Transform WindPrefab;
+    [SerializeField] private Transform SolarPrefab;
+    [SerializeField] private Transform ResearchPrefab;
 
     private Grid<MapGridObject> grid;
     private bool updateVisual;
@@ -62,6 +68,21 @@ public class GridPrefabVisual : MonoBehaviour
             case MapGridObject.Type.Rock:
                 ReCreateVisualNode(position, RockPrefab);
                 break;
+            case MapGridObject.Type.Trees:
+                ReCreateVisualNode(position, TreesPrefab);
+                break;
+            case MapGridObject.Type.Mine:
+                ReCreateVisualNode(position, MinePrefab);
+                break;
+            case MapGridObject.Type.Wind:
+                ReCreateVisualNode(position, WindPrefab);
+                break;
+            case MapGridObject.Type.Solar:
+                ReCreateVisualNode(position, SolarPrefab);
+                break;
+            case MapGridObject.Type.Research:
+                ReCreateVisualNode(position, ResearchPrefab);
+                break;
         }
     }
 
@@ -78,6 +99,8 @@ public class GridPrefabVisual : MonoBehaviour
             Destroy(hitCollider.gameObject);
         }
         Transform visualNodeTransform = Instantiate(transform, position, Quaternion.identity);
+        gameManager.CountGrid();
+        gameManager.UpdateBars();
         return visualNodeTransform;
     }
 }
